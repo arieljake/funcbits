@@ -125,7 +125,7 @@ std.eachSeries = std.autoCurry(function(iterator, arr, callback)
     iterate();
 });
 
-std.echo = std.autoCurry(function(data, callback)
+std.echoInput = std.autoCurry(function(data, callback)
 {
     console.dir(arguments);
     callback(null, data);

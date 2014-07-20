@@ -9,7 +9,10 @@ This project is inspired (and borrows from) several projects:
 * [bacon.js](https://github.com/baconjs/bacon.js) - functional, reactive programming
 * [async](https://github.com/caolan/async) - 'functional', async programming
 * [underscore](http://underscorejs.org/) - functional programming
-
+* [lodash](http://lodash.com/) - functional programming
+* [ramda](https://github.com/CrossEye/ramda) - functional programming
+* [allong.es](http://allong.es/) - function combinator and decorator recipes
+* [lemonad](http://fogus.github.io/lemonad/) - functional programming
 
 I felt a rare tingle when I saw currying, and have since been trying to figure out functional programming in Javascript. Seems like it could be fast, concise and super testable.
 
@@ -22,7 +25,37 @@ As I see it, to fully leverage functional programming concepts in Javascript, we
 This github repo attempts to address #1 and #2.
 
 
-# Functional Programming Principles
+## Quick Start (Node)
+
+Install:
+
+	npm install funcbits
+
+Usage:
+
+	var funcbits = require('funcbits');
+	var std = funcbits.std;
+	var exp = funcbits.express;
+	var trx = require("./myFuncs/translationApi.js");
+
+	router.get('/translate', function(req, res)
+	{
+	    var userQuery = req.query.q;
+	    var toLang = req.query.toLang || "en";
+
+	    var translate = std.seq(
+	        trx.detectLanguage,
+	        std.combineAsArray([std.echoInput, toLang, userQuery]),
+	        std.spread( trx.translate ),
+	        std.async( exp.sendDataSync(res) )
+	    );
+
+	    translate(userQuery, function(err, result) {
+        	console.log("translation complete");
+	    });
+	});
+
+## Functional Programming Principles
 
 * To leverage currying, function arguments should be ordered according to their currying relevance.
 
