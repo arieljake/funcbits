@@ -1,0 +1,21 @@
+{
+    "name": "funcbits",
+    "main": "dist/funcbits.js",
+    "version": "0.0.1",
+    "homepage": "https://github.com/arieljake/funcbits",
+    "authors": [
+        "Ariel Jakobovits <arieljake@yahoo.com>"
+    ],
+    "description": "functional programming bits for Javascript",
+    "moduleType": [
+        "amd"
+    ],
+    "license": "MIT",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ]
+}

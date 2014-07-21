@@ -1,4 +1,4 @@
 
 
-module.exports.std = require("./build-common/std.js").std;
-module.exports.express = require("./build-common/express.js").express;
+module.exports.std = require("./lib/std.js").std;
+module.exports.express = require("./lib/express.js").express;

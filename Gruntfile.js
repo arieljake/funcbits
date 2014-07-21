@@ -1,12 +1,13 @@
 module.exports = function(grunt)
 {
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-es6-module-transpiler');
     grunt.loadNpmTasks('grunt-mocha-test');
 
     grunt.initConfig(
     {
-        clean: ["build-common", "build-amd"],
+        clean: ["dist"],
         transpile:
         {
             common:
@@ -17,7 +18,7 @@ module.exports = function(grunt)
                     expand: true,
                     cwd: 'src/',
                     src: ['**/*.js'],
-                    dest: 'build-common/'
+                    dest: 'lib/'
                 }]
             },
             amd:
@@ -28,8 +29,19 @@ module.exports = function(grunt)
                     expand: true,
                     cwd: 'src/',
                     src: ['**/*.js'],
-                    dest: 'build-amd/'
+                    dest: 'build/'
                 }]
+            }
+        },
+
+        uglify:
+        {
+            main:
+            {
+                files:
+                {
+                    'dist/funcbits.js': ['build/*.js']
+                }
             }
         },
 
@@ -46,7 +58,7 @@ module.exports = function(grunt)
         }
     });
 
-    grunt.registerTask('build', ['clean', 'transpile:common', 'transpile:amd']);
+    grunt.registerTask('build', ['clean', 'transpile:common', 'transpile:amd', 'uglify:main']);
     grunt.registerTask('test', 'mochaTest');
 
 };
