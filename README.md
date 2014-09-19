@@ -14,15 +14,15 @@ This project is inspired (and borrows from) several projects:
 * [allong.es](http://allong.es/) - function combinator and decorator recipes
 * [lemonad](http://fogus.github.io/lemonad/) - functional programming
 
-I felt a rare tingle when I saw currying, and have since been trying to figure out functional programming in Javascript. Seems like it could be fast, concise and super testable.
+Basically, I have come to feel that currying is cool. Seems like it could be fast, concise and super testable.
 
-As I see it, to fully leverage functional programming concepts in Javascript, we need:
+To fully leverage functional programming concepts in Javascript, we need:
 
-1. A set of functional programming principles to guide the community in maintaining a framework.
+1. A set of clear functional programming principles.
 2. The basic building blocks of a functional programming framework.
-3. A framework with conventions, configurations, and compilations to simplify functional programming projects.
+3. A complimentary set of conventions, configurations, and utilities to simplify functional programming projects.
 
-This github repo attempts to address #1 and #2.
+Func(tional) Bits is an effort towards that.
 
 
 ## Quick Start (Node)
@@ -57,16 +57,16 @@ Usage:
 
 ## Functional Programming Principles
 
-* To leverage currying, function arguments should be ordered according to their currying relevance.
+To leverage currying, function arguments need to be ordered according to their currying relevance, with the data argument last.
 
 	For example, Underscore's map function:
 	
 	`_.map(list, iterator, [context])`
 	
-	This map function is difficult to curry because it has the list argument first, and we typically want to pass our data last, after all other arguments of the function have been 'loaded'. A more useful map definition:
+This map function is difficult to curry because 'list', the data argument, is first. We typically want to pass our data last after all other parameters of how the function will be behave have been 'loaded' through arguments. A more useful map definition would be:
 	
 	`_.map(iterator, context, list)`
 	
-	> Currying functions like map in Underscore where the arguments are inconveniently ordered is what the [partial](http://fitzgen.github.io/wu.js/#wu-partial) function in wu.js is useful for, as it lets you curry arguments that are positioned anywhere in the function definition using the wu.___ constant to skip those you want to pass later.
+Note: Currying functions like Underscore's map, where the arguments are inconveniently ordered for currying, is what the [partial](http://fitzgen.github.io/wu.js/#wu-partial) function in wu.js is intended for. It lets you curry arguments that are positioned anywhere in the function definition using the wu.___ constant as a placeholder to skip arguments you want to pass later.
 	
-	
+When a library is well designed for currying, a natural flow develops that can curry, or 'prepare', functions as code is doing its job. For example:
