@@ -14,7 +14,7 @@ This project is inspired (and borrows from) several projects:
 * [allong.es](http://allong.es/) - function combinator and decorator recipes
 * [lemonad](http://fogus.github.io/lemonad/) - functional programming
 
-Basically, I have come to feel that currying is cool. Seems like it could be fast, concise and super testable.
+Basically, currying can be fast, concise and super testable.
 
 To fully leverage functional programming concepts in Javascript, we need:
 
