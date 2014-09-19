@@ -73,4 +73,16 @@ Note: Essentially, you can think of constructors in object oriented as a form of
 
 	replace(string, regex, replacement) <----> string.replace(regex, replacement)
 
-When a library is well designed for currying, a natural flow develops that can curry, or 'prepare', functions as code is doing its job. For example:
+When a library is well designed for currying, a natural flow can develop in which functions are prepared gradually as data becomes available to the process. For example, let's say we are handling a user's request to see their inbox sorted in their favorite way. When the request is first being handled, we might only have the user's id. We might use the user id to retrieve the user record, which might itself lead us to the user's inbox settings, which might finally lead us to the user's email data, and finally we are ready to generate output. Ideally, as soon as we load some data, we are able to deposit it into the process immediately for inclusion so we don't have to hold onto it anymore, and be able to pass control to whatever is the next step in the process.
+
+	Step 1: Load User with user ID
+	process.curry(user)
+	
+	Step 2: Load Inbox settings
+	process.curry(inboxSettings)
+	
+	Step 3: Load emails
+	process.curry(emails)
+	
+	Step 4: Generate Output
+	process();
