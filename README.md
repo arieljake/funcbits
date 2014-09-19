@@ -67,6 +67,10 @@ This map function is difficult to curry because 'list', the data argument, is fi
 	
 	`_.map(iterator, context, list)`
 	
-Note: Currying functions like Underscore's map, where the arguments are inconveniently ordered for currying, is what the [partial](http://fitzgen.github.io/wu.js/#wu-partial) function in wu.js is intended for. It lets you curry arguments that are positioned anywhere in the function definition using the wu.___ constant as a placeholder to skip arguments you want to pass later.
-	
+Note: Currying functions like Underscore's map, where the arguments are inconveniently ordered for currying, is what the [partial](http://fitzgen.github.io/wu.js/#wu-partial) function in wu.js is intended for. It lets you curry arguments that are positioned anywhere in the function definition using the wu.___ constant as a placeholder to skip arguments you want to provide later.
+
+Note: Essentially, you can think of constructors in object oriented as a form of currying. For all public methods on your objects, you are able to ask for whatever data you need to complete the function. When you realize that all or many of your public methods are asking for the same argument, you might replace asking again and again with adding the argument to the constructor...such as what happened to object state in the transition from procedural to object oriented programming:
+
+	replace(string, regex, replacement) <----> string.replace(regex, replacement)
+
 When a library is well designed for currying, a natural flow develops that can curry, or 'prepare', functions as code is doing its job. For example:
