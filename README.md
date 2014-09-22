@@ -13,7 +13,7 @@ This project is inspired (and borrows from) several projects:
 * [ramda](https://github.com/CrossEye/ramda) - functional programming
 * [allong.es](http://allong.es/) - function combinator and decorator recipes
 * [lemonad](http://fogus.github.io/lemonad/) - functional programming
-
+* [transducers.js](https://github.com/jlongster/transducers.js) - data transformers, functional programming
 Basically, currying can be fast, concise and super testable.
 
 To fully leverage functional programming concepts in Javascript, we need:
